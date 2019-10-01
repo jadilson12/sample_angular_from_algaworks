@@ -1,0 +1,13 @@
+
+<div class="container">
+
+  <!-- Interpolação -->
+  <h1> Meu nome é {{ nome }}</h1><br>
+  <h1> Meu idade é {{ getIdade()  +  20}}</h1>
+
+  <hr>
+  <h1>Lista de produtos</h1>
+  <div *ngFor="let produto of produtos">
+    {{ produto.nome}}
+  </div>
+</div>
