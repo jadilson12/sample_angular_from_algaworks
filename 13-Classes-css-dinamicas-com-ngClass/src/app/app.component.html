@@ -1,0 +1,8 @@
+<div class="container">
+    <app-aluno-form (alunoAdicionado)="addAluno($event)"></app-aluno-form>
+    <div class="row">
+    <div class="col-2 p-3" *ngFor="let a of alunos">
+        <app-aluno-card [aluno]="a"></app-aluno-card>
+    </div>
+  </div>
+</div>
