@@ -1,0 +1,6 @@
+<div class="container">
+    <div>{{ nome | uppercase }} </div>
+    <div>{{ dataAniversario | date:'dd/MM/y' }} </div>
+    <div>{{ preco | number: '3.2-2' }} </div>
+    <div>{{ troco | currency: 'BRL': true: '1.2-2' }} </div>
+</div>
