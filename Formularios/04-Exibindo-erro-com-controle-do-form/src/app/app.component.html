@@ -1,0 +1,68 @@
+<div class="container">
+  <div
+    *ngIf="usuarioForm.invalid && usuarioForm.touched"
+    class="alert alert-danger"
+  >
+    Preencha todos os campos corretamente!
+  </div>
+  <form #usuarioForm="ngForm" (ngSubmit)="salvar(usuarioForm)">
+    <div class="form-group">
+      <label class="form-control-label">Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="cliente.nome"
+        name="nome"
+        required
+        minlength="10"
+        #nome="ngModel"
+      />
+
+      <div *ngIf="nome.hasError('required') && nome.dirty">Informe um nome</div>
+      <div *ngIf="nome.hasError('minlength') && nome.dirty">
+        O nome deve ser completo
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label">E-mail</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="cliente.email"
+        name="email"
+        required
+        email
+        #email="ngModel"
+      />
+      <div *ngIf="email.invalid && nome.touched">Informe um email</div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label">Profissão</label>
+      <select
+        class="form-control"
+        [(ngModel)]="cliente.profissao"
+        name="profissao"
+        required
+        #profissao="ngModel"
+      >
+        <option value="">Selecione</option>
+        <option *ngFor="let profissao of profissoes" [value]="profissao">{{
+          profissao
+        }}</option>
+      </select>
+      <div *ngIf="profissao.invalid && nome.pristine">
+        Informe uma profissao
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!usuarioForm.valid"
+    >
+      Salvar
+    </button>
+  </form>
+</div>
