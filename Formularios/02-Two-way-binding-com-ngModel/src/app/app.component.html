@@ -1,0 +1,47 @@
+<div class="container">
+  {{ cliente | json }}
+  {{ usuarioForm.valid }}
+  {{ usuarioForm.invalid }}
+  <form #usuarioForm="ngForm" (ngSubmit)="salvar(usuarioForm)">
+    <div class="form-group">
+      <label class="form-control-label">Nome</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="cliente.nome"
+        name="nome"
+        required
+        minlength="10"
+      />
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label">E-mail</label>
+      <input
+        type="email"
+        class="form-control"
+        [(ngModel)]="cliente.email"
+        name="email"
+        required
+        email
+      />
+    </div>
+
+    <div class="form-group">
+      <label class="form-control-label">Profissão</label>
+      <select
+        class="form-control"
+        [(ngModel)]="cliente.profissao"
+        name="profissao"
+        required
+      >
+        <option value="">Selecione</option>
+        <option *ngFor="let profissao of profissoes" [value]="profissao">{{
+          profissao
+        }}</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!usuarioForm.valid">Salvar</button>
+  </form>
+</div>
